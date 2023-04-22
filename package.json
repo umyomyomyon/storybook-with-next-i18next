@@ -33,6 +33,7 @@
     "@storybook/react": "^7.0.6",
     "@storybook/testing-library": "^0.0.14-next.2",
     "eslint-plugin-storybook": "^0.6.11",
+    "i18next-http-backend": "^2.2.0",
     "storybook": "^7.0.6"
   }
 }
