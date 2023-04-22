@@ -17,9 +17,9 @@ const config: StorybookConfig = {
     if (config.resolve && config.resolve.alias) {
       config.resolve.alias = {
         'next-i18next': 'react-i18next',
-      }
-    }
-    return config
+      };
+    };
+    return config;
   },
   staticDirs: ['../public'],
 };

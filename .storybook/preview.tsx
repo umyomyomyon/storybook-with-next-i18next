@@ -1,7 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import type { Preview } from "@storybook/react";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n";
+
+const withI18next = (Story, context) => {
+  const { locale } = context.globals;
+
+  useEffect(() => {
+    i18n.changeLanguage(locale);
+  }, [locale]);
+
+  return (
+    <I18nextProvider i18n={i18n}>
+      <Story />
+    </I18nextProvider>
+  );
+};
+
+export const globalTypes = {
+  locale: {
+    name: 'Locale',
+    description: 'Internationalization locale',
+    toolbar: {
+      icon: 'globe',
+      items: [
+        { value: 'ja', title: '日本語' },
+        { value: 'en', title: 'English' },
+      ],
+      showName: true,
+    },
+  },
+};
 
 const preview: Preview = {
   parameters: {
@@ -13,13 +42,7 @@ const preview: Preview = {
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <I18nextProvider i18n={i18n}>
-        <Story />
-      </I18nextProvider>
-    )
-  ]
+  decorators: [withI18next]
 };
 
 export default preview;
